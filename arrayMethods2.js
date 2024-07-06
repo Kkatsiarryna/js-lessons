@@ -156,11 +156,115 @@ console.log(combinedObj)*/
 //     {names: []} )
 // console.log(peopleNames);
 
-const words = ['Hello', ' ', 'world', '!']; //Hello world
+/*const words = ['Hello', ' ', 'world', '!']; //Hello world
 
 const result = words.reduce((acc, word) => acc + word)
-console.log(result)
+console.log(result)*/
 
+//HOMEWORK
 
+//slice
+// let str="Hello, world";
+// let startIndex= 7;
+// function getSubStr(str, startIndex){
+//     return str.slice(startIndex);
+// }
+// console.log(getSubStr(str, startIndex));
 
+// function getLastElements(arr, number){
+//     return arr.slice(-number);
+// }
+// console.log(getLastElements( [1,2,3,4,5], 3) ); //(3) [3, 4, 5]
+
+// extractPath = (path, startIndex) => {
+//     return path.slice(startIndex+1)
+// }
+// console.log(extractPath('https://example.com/blog/article', 18));
+
+//splice
+//1)
+// removeElement = (array, indexOfElementForDelete) => {
+//      array.splice(indexOfElementForDelete, 1); //3
+//      return array; //[1, 2, 4, 5]
+// }
+// console.log(removeElement([1,2,3,4,5], 2)); //[1, 2, 4, 5]
+
+//2)
+// insertElement = (array, index, element) => {
+//     array.splice(index, 0, element); //вставить элемент с позиции indexб удалить 0, какой элемент вставить
+//     return array;
+// }
+// console.log(insertElement([1,2,4,5], 2, 3));
+
+//reduce
+//1)
+// function sumArray (array) {
+//     return array.reduce((acc, item) => acc + item)
+// }
+// console.log(sumArray([1,2,3,4,5,6,7,8,9]));
+
+//2)
+// function sumStringLengths(array){
+//     return array.reduce((acc, word) => acc + word.length, 0);
+// }
+// console.log(sumStringLengths(['apple', 'banana', 'cherry']));
+
+//3
+// sumNestedArrays = (array) => {
+//    // return array.flat().reduce((acc, item) => acc + item);
+
+//    return array.reduce( (acc, item) => {
+//     return acc + item.reduce( (acc, number) => (acc + number), 0)
+//    }, 0)
+// }
+// console.log(sumNestedArrays([ [1,2], [3,4,5], [6,7,8,9] ]));
+
+//4
+// removeDuplictes = (array) => {
+//     return array.reduce((newArray, currentElement) => {
+//         //return !newArray.includes(currentElement) ? newArray.concat(currentElement) : newArray;
+//         return newArray.indexOf(currentElement) === -1 ? newArray.concat(currentElement) : newArray;
+//     }, [])
+// }
+// console.log(removeDuplictes([1,2,3,3,4,5,5]));
+
+//5
+// const array = [1, 2, 3, 2, 4, 5, 4, 5, 5, 4];
+// const findDuplicates = (array) => {
+//         return array.reduce((newArray, currentElement, index, array) => {
+//             return array.indexOf(currentElement) !== index && !newArray.includes(currentElement) ? newArray.concat(currentElement) : newArray;
+//             //   if (arr.indexOf(item, index + 1) !== -1 && duplicates.indexOf(item) === -1) {
+//             //      duplicates.push(item);
+//             //    }
+//     }, [])
+// }
+// const duplicatesArray = findDuplicates(array);
+// console.log(duplicatesArray); // Output: [2, 4, 5]
+
+//6
+// const words = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple'];
+// const wordCount = (array) => {
+//     return array.reduce( (acc, currentWord) => {
+//         acc[currentWord] = ( acc[currentWord] || 0) + 1;
+//         return acc;
+//         }, {}
+//     )
+// }
+// console.log(wordCount(words)); // Output: { apple: 3, banana: 2, cherry: 1 }
+
+//7
+// const people = [
+//     { name: 'Alice', age: 25 },
+//     { name: 'Bob', age: 30 },
+//     { name: 'Charlie', age: 22 },
+// ];
+// const getPropertyValues = (array, property) => {
+//     return array.reduce( (acc, currentValue) => {
+//         acc.push(currentValue[property]);
+//         return acc;
+//     }, []
+//     )
+// }
+// const names = getPropertyValues(people, 'name');
+// console.log(names); // Output: ['Alice', 'Bob', 'Charlie']
 
