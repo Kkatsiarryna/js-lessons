@@ -39,61 +39,61 @@
 // //Promise { <pending> }
 
 /// EXAMPLE - 1
-const getData = () =>
-    new Promise((res, rej) => {
-        setTimeout(() => {
-            res('some data');
-            // rej("some error");
-        }, 1000);
-    });
-
-// Функция getData возвращает новый промис,
-//     который через 1000 миллисекунд (1 секунду) переходит в состояние resolved с данными 'some data'.
-
-getData()
-    .then((data) => {
-        console.log("then1", data);
-        return new Promise((res, rej) => {
-            setTimeout(() => {
-                // res("some data from request2");
-                rej("some error");
-            }, 2000);
-        });
-    })
-// Получает данные 'some data' и выводит "then1 some data".
-//     Возвращает новый промис, который через 2000 миллисекунд (2 секунды) переходит в состояние rejected с ошибкой "some error".
-    .then((data) => {
-        console.log("then2", data);
-        return 20;
-    }) //Этот then не будет выполнен, так как предыдущий промис был отклонен.
-    .catch((data) => {
-        console.log("catch1", data);
-        // return;
-    }) //Перехватывает ошибку "some error" и выводит "catch1 some error". Не возвращает значение, поэтому следующий then получит undefined.
-    .then((data) => {
-        console.log("then3", data);
-        return b;
-    }) //Получает undefined и выводит "then3 undefined". Возвращает значение переменной b, которая не определена, что вызовет ошибку.
-    .then((data) => {
-        console.log("then4", data);
-        return 40;
-    }) //Этот then не будет выполнен из-за ошибки в предыдущем then.
-    .catch((data) => {
-        console.log("catch2", data);
-        return 50;
-    }) //Перехватывает ошибку и выводит "catch2 ReferenceError: b is not defined". Возвращает 50.
-    .finally((data) => {
-        console.log("finally", data);
-        return c;
-    }) //Выполняется независимо от состояния промиса и выводит "finally undefined".
-    // Возвращает значение переменной c, которая не определена, но это значение не передается в следующий then.
-    .then((data) => {
-        console.log("then5", data);
-    })
-    .catch( (err) => {
-        console.log("catch3", err);
-        return 100
-    })
+// const getData = () =>
+//     new Promise((res, rej) => {
+//         setTimeout(() => {
+//             res('some data');
+//             // rej("some error");
+//         }, 1000);
+//     });
+//
+// // Функция getData возвращает новый промис,
+// //     который через 1000 миллисекунд (1 секунду) переходит в состояние resolved с данными 'some data'.
+//
+// getData()
+//     .then((data) => {
+//         console.log("then1", data);
+//         return new Promise((res, rej) => {
+//             setTimeout(() => {
+//                 // res("some data from request2");
+//                 rej("some error");
+//             }, 2000);
+//         });
+//     })
+// // Получает данные 'some data' и выводит "then1 some data".
+// //     Возвращает новый промис, который через 2000 миллисекунд (2 секунды) переходит в состояние rejected с ошибкой "some error".
+//     .then((data) => {
+//         console.log("then2", data);
+//         return 20;
+//     }) //Этот then не будет выполнен, так как предыдущий промис был отклонен.
+//     .catch((data) => {
+//         console.log("catch1", data);
+//         // return;
+//     }) //Перехватывает ошибку "some error" и выводит "catch1 some error". Не возвращает значение, поэтому следующий then получит undefined.
+//     .then((data) => {
+//         console.log("then3", data);
+//         return b;
+//     }) //Получает undefined и выводит "then3 undefined". Возвращает значение переменной b, которая не определена, что вызовет ошибку.
+//     .then((data) => {
+//         console.log("then4", data);
+//         return 40;
+//     }) //Этот then не будет выполнен из-за ошибки в предыдущем then.
+//     .catch((data) => {
+//         console.log("catch2", data);
+//         return 50;
+//     }) //Перехватывает ошибку и выводит "catch2 ReferenceError: b is not defined". Возвращает 50.
+//     .finally((data) => {
+//         console.log("finally", data);
+//         return c;
+//     }) //Выполняется независимо от состояния промиса и выводит "finally undefined".
+//     // Возвращает значение переменной c, которая не определена, но это значение не передается в следующий then.
+//     .then((data) => {
+//         console.log("then5", data);
+//     })
+//     .catch( (err) => {
+//         console.log("catch3", err);
+//         return 100
+//     })
 
 // then1 some data
 // catch1 some error
