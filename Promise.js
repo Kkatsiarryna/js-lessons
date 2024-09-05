@@ -1,6 +1,9 @@
 
 // const promise = new Promise ( (res, rej) => {}) //res, rej - это функции, их вызов меняет состояние промисов
-//
+//(res, rej) - создаются внутри класса, их закидывает класс промиса
+//функция экзекъютор
+
+
 // console.log(promise) //Promise { <pending> }
 //
 //
@@ -176,3 +179,29 @@
 
 // reject1 catch1
 // then1
+
+//--------------------
+//Асинхронные функции
+
+// fetch('https://api.github.com/users/kkatsiarryna').then( res => {
+//     return res.json();
+// }).then(res => {
+//     console.log(res);
+// }).catch( err => {
+//     console.log("ERROR: ", err);
+// })
+
+//async function getGitData() {
+
+// const getGitData = async () => {
+//     try {
+//         const response = await fetch('https://api.github.com/users/kkatsiarryna');
+//         const data = await response.json();
+//         console.log(data);
+//     } catch (error) {
+//         console.error("ERROR: ", error);
+//     }
+// }
+//
+// getGitData();
+
