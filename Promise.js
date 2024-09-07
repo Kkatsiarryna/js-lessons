@@ -205,3 +205,223 @@
 //
 // getGitData();
 
+//eventloop
+
+// console.log('start')
+//
+// setTimeout( function (){
+//     console.log('timeout')
+// }, 3000)
+//
+// console.log('end')
+// // start
+// // end
+// // timeout
+
+
+// console.log('start')
+//
+// setTimeout( function (){
+//     let a = 1 + 3;
+//     let b = 5 + 6;
+//     let c = 7 + 8;
+//
+//     console.log('timeout - 1')
+// }, 0)
+//
+// setTimeout( function (){
+//     console.log('timeout - 2')
+// }, 0)
+//
+// setTimeout( function (){
+//     console.log('timeout - 3')
+// }, 0)
+//
+// console.log('end')
+//
+// // start
+// // end
+// // timeout - 1
+// // timeout - 2
+// // timeout - 3
+//setTimeout с одинаковым временем, последовательность будет сохраняться
+
+
+// setTimeout(function a(){}, 1000)
+// setTimeout(function b(){}, 500)
+// setTimeout(function c(){}, 0)
+//
+// function d(){}
+// d()
+//
+// //d, c, a, b
+
+
+// task 1
+// function a() {
+//     setTimeout( () => {
+//         console.log('1')
+//     })
+// }
+//
+// function b() {
+//     console.log('2')
+// }
+//
+// a();
+//
+// new Promise( ( res, rej ) => { //создание промиса синхронный код
+//     console.log('3');
+//     res();
+// }).then( () => {
+//     setTimeout( function timer (){
+//         console.log('4')
+//     }, 0)
+// })
+//
+// b();
+//
+// // 3 2 1 4
+
+
+
+// function a() {
+//     setTimeout( () => {
+//         console.log('1')
+//     }, 1000)
+// }
+// function b() {
+//     console.log('2')
+// }
+// a();
+// new Promise( ( res, rej ) => { //создание промиса синхронный код
+//     console.log('3');
+//     res();
+// }).then( () => {
+//     setTimeout( function timer (){
+//         console.log('4')
+//     }, 0)
+// })
+// b();
+//// 3 2 4 1
+
+
+
+// setTimeout( () => {
+//         console.log('1')
+// }, 0)
+//
+// setTimeout( () => {
+//         console.log('2')
+// }, 1000)
+//
+// new Promise( ( res, rej ) => {
+//      console.log('3');
+//      res();
+//      console.log('4');
+//  }). then ( () => {
+//      console.log('5');
+//      })
+//
+// console.log('6');
+//
+// async function test1() {
+//     console.log('7'); // код выполняется синхронно до await
+//     await test2(); // то, что после строки с await выполняется асинхронно
+//     console.log('8');
+//     await ( () => {}) ();
+//     console.log('12')
+// }
+//
+// async function test2() {
+//     console.log('9');
+// }
+//
+// test1();
+// console.log('10')
+// //3 4 6 7 9 10 5 8 12 1 2
+
+
+// console.log('1'); // консоль сразу 1
+//
+// setTimeout( () => { // callback отпправляется в макростаску
+//         console.log('2')
+//         Promise.resolve().then( ()=> { //callback из then отпрпавляется в микротаску
+//             console.log('3')
+//         })
+// })
+//
+// new Promise( ( res, rej ) => {
+//      console.log('4');
+//      res(5);
+//  }). then ( (data) => {
+//      console.log(data); // отправляется в микростаску, дальше  вышли
+//
+//      Promise.resolve()
+//          .then( ()=> {
+//              console.log('6')
+//      })
+//          .then( () => {
+//              console.log('7')
+//
+//              setTimeout( () => {
+//                  console.log('8')
+//              }, 0)
+//          })
+//
+//      })
+//
+// setTimeout( () => {
+//     console.log('9')
+// }, 0)
+//
+// console.log('10')
+//
+// // 1 4 10 , mic - 5 , mac - 2 9      - в момент окончания синхронного кода
+// // 1 4 10 5 6 7 2 3 9 8
+
+
+// async function first() {
+//     console.log('9');
+//     await Promise.resolve(2).then( (r) => console.log(r));
+//     console.log('0'); // это тоже микротаска
+//     await Promise.resolve(3).then( (r) => console.log(r));
+// }
+// async function second() {
+//     console.log('10');
+//     await Promise.resolve(4).then( (r) => console.log(r));
+//     console.log('11');
+//     await Promise.resolve(5).then( (r) => console.log(r));
+// }
+//
+// first();
+// second();
+//
+// const promise = Promise.resolve('new Promise');
+// promise.then( (str) => console.log(str));
+//
+// //9 10 2 4 new Promise 0 11 3 5
+//
+// //микротаски  - 2 4 newPromise 0 11 3 5
+
+
+// console.log('log 1');
+// Promise.resolve()
+//     .catch( () => console.log('catch 1 '))
+//     .then( () => console.log('then 1 '))
+//
+// Promise.resolve()
+//     .then( () => console.log('then 2 '))
+//
+// console.log('log 2')
+//
+// // log 1
+// // log 2
+// // then 2
+// // then 1
+
+
+
+
+
+
