@@ -197,3 +197,224 @@
 // •  9 + 8 = 17
 //
 // •  3 + 17 = 20
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// ANOTHER LESSON
+
+// EXAMPLE - 1
+// let globalScope = {
+//     outherScope: null,
+//     f: 'Function',
+//     a: 10,
+// }
+//
+// let a = 10;
+//
+// function f(){
+//     let fScope = {
+//         outerScope: globalScope,
+//     }
+//     console.log(a)
+//     console.log(b) //undefined
+//     var b = 100
+// }
+//
+// // как это выглядит:
+// // var b; // Поднятие объявления переменной
+// // console.log(a); // Выводит 10
+// // console.log(b); // Выводит undefined
+// // b = 100; // Инициализация переменной
+//
+// f()
+
+
+//EXAMPLE - 2
+
+// let globalScope = {
+//     outherScope: null,
+//     f: 'Function',
+//     a: 10
+// }
+//
+// let a = 10;
+// function f(){
+//     let fScope = {
+//         outerScope: globalScope,
+//         i: 100, //undefined -> 50 -> 100
+//         inner: 'Function',
+//     }
+//
+//     console.log(a);
+//     var i = 50;
+//
+//     function inner(){
+//         let innerScope = {
+//             outerScope: fScope,
+//         }
+//         i += 50
+//         console.log(i)
+//         console.log(a);
+//     }
+//
+//     inner();
+// }
+//
+// f()
+//console.log(i) //error
+
+//вывод
+// 10
+// 100
+// 10
+
+
+// //EXAMPLE 3
+// let globalScope = {
+//     outherScope: null,
+//     f: 'Function',
+//     someFunc: 'Function', // undefined -> 'Function'
+//     someFunc2: 'Function',
+// }
+//
+// function f(arg){
+//     let fScope = {
+//         outerScope: globalScope,
+//         arg: 160, // undefined -> 100 -> 110 -> 130 -> 160
+//         inner: 'Function',
+//     }
+//
+//     let fScope2 = {
+//         outerScope: globalScope,
+//         arg: 1000, //
+//         inner: 'Function',
+//     }
+//
+//     function inner(arg2){
+//         let innerScope = {
+//             outerScope: fScope,
+//             arg2: 10 //undefined -> 10
+//         }
+//
+//         let innerScope2 = {
+//             outerScope: fScope,
+//             arg2: 20 //undefined -> 20
+//         }
+//
+//         let innerScope3 = {
+//             outerScope: fScope,
+//             arg2: 30 //undefined -> 30
+//         }
+//
+//         let inner2Scope1 = {
+//             outerScope: fScope2,
+//             arg2: 300 //undefined -> 30
+//         }
+//
+//         arg += arg2
+//         console.log('arg ', arg)
+//     }
+//
+//     return inner //ссылка на функцию
+// }
+//
+// var someFunc = f(100)
+// someFunc(10) // вызывается функция inner
+// someFunc(20) // будет создавать новое лексическое окружение для inner
+// someFunc(30)
+//
+//
+// var someFunc2 = f(1000)
+// someFunc2(300)
+//
+// //RESULT
+// // arg  110
+// // arg  130
+// // arg  160
+// // arg  1300
+
+
+//EXAMPLE - 4
+// let globalScope = {
+//     outherScope: null,
+//     f: 'Function',
+//     a: 10,
+//     s: 'Function',
+// }
+//
+// let a = 10;
+//
+// function f() {
+//     let fScope = {
+//         outerScope: globalScope,
+//         a: 100, //undefined -> 50 -> 100
+//         inner: 'Function',
+//     }
+//     var a = 50
+//     console.log(a)
+//
+//
+//     function inner() {
+//         let innerScope = {
+//             outerScope: fScope,
+//         }
+//         a += 50
+//         console.log(a);
+//     }
+//
+//    return  inner
+// }
+//
+// let s  = f();
+// s()
+// console.log(a);
+//
+//
+// //RETURN
+// // 50
+// // 100
+// // 10
+
+// Task 01
+// Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
+
+// function sum(arg){
+//     function dopSum(arg2){
+//         console.log(arg + arg2);
+//     }
+//     return dopSum
+// }
+// sum(3)(6)
+
+// function sum2(arg){
+//     return function (arg2){
+//         return arg + arg2
+//     }
+// }
+//
+// console.log(sum2(2)(4))
+
+
+//не создается замыкание для call
+
+var a = 500;
+
+function someFunc(callback){
+    let a = 10;
+    return callback;
+}
+
+const call = (arg) => {
+    console.log(a);
+    console.log(arg)
+}
+
+console.log(someFunc(call)(6))
+
+
+
+
+
+
+
+
