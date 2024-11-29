@@ -395,21 +395,109 @@
 // console.log(sum2(2)(4))
 
 
-//не создается замыкание для call
 
-var a = 500;
+//замыкание создается в момент определения функции
+// //не создается замыкание для call
+// var a = 500;
+//
+// function someFunc(callback){
+//     let a = 10;
+//     return callback;
+// }
+//
+// const call = (arg) => {
+//     console.log(a);
+//     console.log(arg)
+// }
+//
+// console.log(someFunc(call)(6))
+//
+// // •  someFunc(call) возвращает функцию call.
+// //
+// // •  Затем вызывается call(6).
+//
+// //RETURN
+// // 500
+// // 6
+// // undefined - так как функция call ничего не возвращает
 
-function someFunc(callback){
-    let a = 10;
-    return callback;
-}
 
-const call = (arg) => {
-    console.log(a);
-    console.log(arg)
-}
+// var a = 500;
+// function someFunc(callback){
+//     let a = 10;
+//    callback(a);
+// }
+// const call = (arg) => {
+//     console.log(a);
+//     console.log(arg)
+// }
+// console.log(someFunc(call))
+//
+// //RETURN
+// // 500
+// // 10
+// // undefined
 
-console.log(someFunc(call)(6))
+
+//РЕКУРСИЯ
+// пример использования - рекурсивный обход деревьев
+
+// function sumTo(num){
+//     if(num <= 1) return num
+//     return num + sumTo(num -1) // стек
+// }
+//
+// console.log(sumTo(100))
+//
+// //5050
+
+
+// Task 04*
+// Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
+// и что бы корректно работали следующие вызовы:
+// 1) superSum(0) //0
+// 2) superSum(3)(2)(5)(3) //10
+// 3) superSum(3)(2)(5,3) //10
+// 4) superSum(3)(2,5,3) //10
+// 5) superSum(3)(2,5)(3) //10
+// 6) superSum(3)(2,5)(3,9) //10
+
+
+// function superSum(num){
+//     if(num <= 0) return 0;
+//     if(num === 1) return (number) => number
+//
+//     let outerParams = [];
+//
+//     function inner(...arg){
+//         outerParams = [...outerParams, ...arg];
+//         if(outerParams.length >= num){
+//             outerParams.length = num
+//             return outerParams.reduce((acc, el) => acc + el)
+//         }
+//         else{
+//             return inner
+//         }
+//     }
+//     return inner()
+// }
+//
+// console.log(superSum(0))
+// console.log(superSum(3)(2)(5)(3))
+// console.log(superSum(3)(2)(5,3))
+// console.log(superSum(3)(2,5,3))
+// console.log(superSum(3)(2,5)(3))
+// console.log(superSum(3)(2,5)(3,9))
+
+
+
+
+
+
+
+
+
+
 
 
 
