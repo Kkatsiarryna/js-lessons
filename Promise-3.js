@@ -458,6 +458,7 @@
 // Promise.resolve(setTimeout( () => console.log(3), 0));
 // console.log(4);
 // Promise.reject(console.log(5))
+//     .then(res => console.log(res))
 //     .catch( err => console.log(6));
 //
 // // 1
@@ -466,6 +467,28 @@
 // // 6
 // // 2
 // // 3
+//
+
+//TASK
+// new Promise ( ( resolve, reject ) => { //конструтор промиса работает синхронно
+//     console.log(1)
+// });
+// new Promise ( ( resolve, reject ) => {
+//     setTimeout( () => console.log(2), 0)
+// });
+// Promise.resolve(setTimeout( () => console.log(3), 0));
+// console.log(4);
+// Promise.resolve(console.log(5))
+//     .then(res => console.log(res))
+//     .catch( err => console.log(6));
+// 1
+// 4
+// 5
+// undefined
+// 2
+// 3
+
+
 
 //TASK 3
 // (function(){
@@ -536,7 +559,7 @@
 //     console.log(4)
 // })
 //
-// setTimeout(f, 0, 5)
+// setTimeout(f, 0, 5) //третьим аргументом перадаем аргумент для коллбэка
 //
 //
 // // 2
@@ -688,6 +711,40 @@
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
+
+
+
+//ASYNC AWAIT
+// async function f() {
+//     try {
+//         const response = await new Promise ( (res, rej) => {
+//             res('resolve')
+//         })
+//         console.log(response)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+//
+// f()
+
+
+//TASK
+// setTimeout(()=> {
+//     console.log(1)
+// }, 0);
+// console.log(2);
+// (()=> console.log(3))();
+// Promise.resolve(console.log(4)); //console.log(4) отбработает синхронно, результат console.log(4) уходит в качетве аргумента resolve, дальше создается промис
+// //resolve - это метод, это функция - принимает аргумент, в качестве аргумента console.log(4), а console.log(4) - это функция которая приняла аргумент 4
+// //нельзя отдать вызов функции в качестве аргумента
+//
+// //результат console.log(4) это undefined, undefined уходит в качестве аргумента resolve-у, resolve создает промис resolve со значением undefined
+//
+// //2
+// // 3
+// // 4
+// // 1
 
 
 
